@@ -1,0 +1,26 @@
+Hi! Fernando built a little interactive demo — a FIFA story + "where AI legal answers go wrong."
+
+HOW TO OPEN (Windows)
+---------------------
+1. Unzip the folder anywhere (Desktop is fine).
+2. Open the "showcase" folder.
+3. Double-click:  Show.bat
+4. Your browser opens automatically. Done.
+
+To close: click the black window and press Ctrl+C, or just close it.
+
+NEEDS
+-----
+- Windows PC
+- Python (Fernando probably has it; if Show.bat fails, install from python.org — check "Add to PATH")
+
+TABS
+----
+1 · Story        — what happened (start here)
+2 · Compare FIFA — Kenya/Zimbabwe 2022 vs Balogun (tap all 3 → conclusion)
+3 · AI mistakes  — click left, read right
+4 · FIFA defense — tap cards
+5 · Grade the AI — rate the bad paragraph (low score = you got it)
+Español          — short Spanish summary
+
+No law knowledge needed. Have fun.

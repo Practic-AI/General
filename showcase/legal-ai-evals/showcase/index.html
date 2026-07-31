@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Legal Reasoning Evals — Showcase</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header class="hero">
+    <p class="eyebrow">Built for fun · Legal AI training eval pack</p>
+    <h1>Legal Reasoning <span>Evals</span></h1>
+    <p class="subtitle">A FIFA controversy — explained for normal humans. Then: spot where AI legal answers go wrong.</p>
+    <div class="hero-meta">
+      <span>Fernando Pazos</span>
+      <span>·</span>
+      <span>Case 01</span>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-panel="timeline">1 · Story</button>
+    <button class="tab" data-panel="pattern">2 · Compare FIFA</button>
+    <button class="tab" data-panel="compare">3 · AI mistakes</button>
+    <button class="tab" data-panel="steelman">4 · FIFA's defense</button>
+    <button class="tab" data-panel="rubric">5 · Grade the AI</button>
+    <button class="tab" data-panel="spanish">Español</button>
+  </nav>
+
+  <main>
+    <!-- TIMELINE -->
+    <section id="timeline" class="panel active">
+      <div class="primer">
+        <h2>What's this about?</h2>
+        <p>US striker <strong>Folarin Balogun</strong> got a red card at the World Cup → automatic 1-match ban. Then <strong>President Trump said he called FIFA's boss</strong> about it. The ban was effectively undone. People asked: <em>did politics bend the rules?</em></p>
+        <p class="primer-foot">Follow the chain here, then go to <strong>2 · Compare FIFA</strong> — same boss, different treatment.</p>
+      </div>
+      <h2 class="section-label">Timeline — click each step</h2>
+      <div class="timeline-track" id="timelineTrack"></div>
+      <div class="timeline-detail" id="timelineDetail">
+        <p class="placeholder">Click step 1 to start →</p>
+      </div>
+      <button class="btn ghost" id="timelineReset">Reset</button>
+    </section>
+
+    <!-- PATTERN / ASYMMETRY -->
+    <section id="pattern" class="panel">
+      <div class="primer">
+        <h2>Same FIFA boss — different treatment?</h2>
+        <p>In <strong>2022</strong>, FIFA's president suspended <strong>Kenya and Zimbabwe</strong> when their <em>governments</em> took over football federations. In <strong>2026</strong>, a <em>U.S. president called</em> about one player's red card — and that player got to play.</p>
+        <p class="primer-foot"><strong>Tap each box below.</strong> When you've read all three, the conclusion unlocks.</p>
+      </div>
+
+      <div class="pattern-grid" id="patternGrid"></div>
+
+      <table class="compare-table" id="compareTable">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Kenya / Zimbabwe (2022)</th>
+            <th>Balogun (2026)</th>
+          </tr>
+        </thead>
+        <tbody id="compareTableBody"></tbody>
+      </table>
+
+      <div class="conclusion-box locked" id="conclusionBox">
+        <h3>Conclusion <span class="lock-label" id="lockLabel">(read all 3 boxes first)</span></h3>
+        <div id="conclusionContent" class="conclusion-hidden">
+          <p>FIFA treats <strong>government touch</strong> as an integrity emergency when it's African federations — matches stopped, funding cut.</p>
+          <p>When a <strong>superpower president</strong> called about <strong>one sanction</strong>, the outcome bent the other way: review, rule citation, player plays.</p>
+          <p class="conclusion-punch">Infantino says he takes calls from leaders all the time. Fine — but <em>taking calls</em> is not the same as <em>opening a case-specific review that ends in your favor</em>.</p>
+          <p class="conclusion-final">That's the unequal-access argument — not "Trump bribed FIFA," but <strong>why was this intervention entertained, and why the soft landing?</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARE -->
+    <section id="compare" class="panel">
+      <div class="primer">
+        <h2>Why compare AI answers?</h2>
+        <p>ChatGPT (and other models) often give <strong>vague, hedge-everything</strong> legal takes on news like this. This tab shows what they get wrong — in plain English — and the sharper fix.</p>
+        <p class="primer-foot"><strong>How to use:</strong> click a mistake on the left → the right panel updates with the explanation.</p>
+      </div>
+
+      <div class="compare-grid">
+        <article class="card bad">
+          <h3>❌ What AI typically says</h3>
+          <p class="card-sub">Tap a mistake</p>
+          <div id="flawList"></div>
+        </article>
+        <article class="card good" id="goodPanel">
+          <h3>✓ What's wrong & how to fix it</h3>
+          <div id="goodContent" class="good-content">
+            <p class="placeholder">← Pick a mistake on the left</p>
+          </div>
+        </article>
+      </div>
+      <p class="anchor" id="anchorQuestion"></p>
+    </section>
+
+    <!-- STEELMAN -->
+    <section id="steelman" class="panel">
+      <div class="primer">
+        <h2>FIFA's real excuse</h2>
+        <p>Not "we felt like it." They say they used <strong>Article 27</strong> of their rulebook — same as other players. Tap each card to see why that still doesn't fully clear them.</p>
+      </div>
+      <div class="steelman-grid" id="steelmanGrid"></div>
+    </section>
+
+    <!-- RUBRIC -->
+    <section id="rubric" class="panel">
+      <div class="primer">
+        <h2>Grade the AI answer</h2>
+        <p>Read the <strong>bad AI paragraph</strong> below. Rate how good it is on each point: <strong>0 = fails</strong>, <strong>1 = partly</strong>, <strong>2 = nails it</strong>. This bad sample should score <strong>low</strong> (around 0–6 total).</p>
+      </div>
+
+      <blockquote class="sample-ai" id="sampleAi"></blockquote>
+
+      <div class="score-legend">
+        <span><strong>0</strong> = missing or wrong</span>
+        <span><strong>1</strong> = mentioned but weak</span>
+        <span><strong>2</strong> = clear and correct</span>
+      </div>
+
+      <div class="score-banner" id="scoreBanner">
+        <span class="score-num" id="scoreNum">0</span>
+        <span class="score-label">/ <span id="scoreMax">14</span></span>
+        <span class="verdict" id="verdict">Answer the questions below</span>
+      </div>
+      <div class="rubric-rows" id="rubricRows"></div>
+    </section>
+
+    <!-- SPANISH -->
+    <section id="spanish" class="panel">
+      <h2>Addendum · Español</h2>
+      <div class="lang-card">
+        <h3>De qué se trata</h3>
+        <p>Roja a Balogun → Trump llama a Infantino → la sanción se suspende. ¿Influyó la política?</p>
+        <h3>Pregunta ancla</h3>
+        <p class="big-quote">¿Por qué se admitió la intervención presidencial antes de que este caso entrara al Art. 27?</p>
+        <h3>Defensa real</h3>
+        <p>FIFA invoca el <strong>Art. 27</strong> y precedentes (Ronaldo, Otamendi, Caicedo).</p>
+        <h3>Réplica</h3>
+        <p><strong>Misma herramienta normativa, distinto punto de entrada.</strong> En Balogun consta contacto presidencial previo.</p>
+        <h3>Asimetría (2022)</h3>
+        <p>FIFA suspendió a Kenia y Zimbabue por interferencia gubernamental. Ante la llamada de Trump sobre una roja — alivio vía Art. 27. Mismo presidente de FIFA, distinto trato.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><code>legal-reasoning-evals/showcase/</code> · Run <code>Show.bat</code></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

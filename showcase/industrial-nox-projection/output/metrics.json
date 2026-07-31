@@ -1,0 +1,182 @@
+{
+  "Unit_1": {
+    "features": [
+      "humidity_abs",
+      "temp_ambient"
+    ],
+    "r2_rf_test": 0.8403498609043354,
+    "r2_linear_test": 0.8350999095977583,
+    "rmse_rf_test": 35.635296106552495,
+    "mae_rf_test": 28.53972366630295,
+    "n_train": 9230,
+    "n_test": 2308,
+    "feature_importance": {
+      "humidity_abs": 0.9377654637642701,
+      "temp_ambient": 0.062234536235729915
+    },
+    "linear_equation": {
+      "intercept": 1011.2693958131669,
+      "coef_humidity": -32.45030539379045,
+      "coef_temp": 4.486710347746414
+    },
+    "model_type": "RandomForestRegressor + LinearRegression",
+    "rf_params": {
+      "n_estimators": 120,
+      "max_depth": 10,
+      "min_samples_leaf": 15,
+      "n_jobs": -1,
+      "random_state": 42
+    },
+    "data": "synthetic_public_demo"
+  },
+  "Unit_2": {
+    "features": [
+      "humidity_abs",
+      "temp_ambient"
+    ],
+    "r2_rf_test": 0.849840766251226,
+    "r2_linear_test": 0.8443727527357743,
+    "rmse_rf_test": 41.18376786257439,
+    "mae_rf_test": 32.70570787353882,
+    "n_train": 9235,
+    "n_test": 2309,
+    "feature_importance": {
+      "humidity_abs": 0.9692945931907181,
+      "temp_ambient": 0.030705406809281927
+    },
+    "linear_equation": {
+      "intercept": 1085.159145088805,
+      "coef_humidity": -37.28829554387238,
+      "coef_temp": 3.075187164976809
+    },
+    "model_type": "RandomForestRegressor + LinearRegression",
+    "rf_params": {
+      "n_estimators": 120,
+      "max_depth": 10,
+      "min_samples_leaf": 15,
+      "n_jobs": -1,
+      "random_state": 42
+    },
+    "data": "synthetic_public_demo"
+  },
+  "Unit_3": {
+    "features": [
+      "humidity_abs",
+      "temp_ambient"
+    ],
+    "r2_rf_test": 0.7191163091363677,
+    "r2_linear_test": 0.7141856336623021,
+    "rmse_rf_test": 42.80113781320465,
+    "mae_rf_test": 34.114689291055505,
+    "n_train": 9202,
+    "n_test": 2301,
+    "feature_importance": {
+      "humidity_abs": 0.8780709912821881,
+      "temp_ambient": 0.12192900871781193
+    },
+    "linear_equation": {
+      "intercept": 946.4883938490173,
+      "coef_humidity": -27.631811621318654,
+      "coef_temp": 5.360850050554956
+    },
+    "model_type": "RandomForestRegressor + LinearRegression",
+    "rf_params": {
+      "n_estimators": 120,
+      "max_depth": 10,
+      "min_samples_leaf": 15,
+      "n_jobs": -1,
+      "random_state": 42
+    },
+    "data": "synthetic_public_demo"
+  },
+  "Unit_4": {
+    "features": [
+      "humidity_abs",
+      "temp_ambient"
+    ],
+    "r2_rf_test": 0.8606280202297225,
+    "r2_linear_test": 0.8691741083266404,
+    "rmse_rf_test": 30.449199691379025,
+    "mae_rf_test": 24.252328877948337,
+    "n_train": 9216,
+    "n_test": 2305,
+    "feature_importance": {
+      "humidity_abs": 0.09905838173170284,
+      "temp_ambient": 0.9009416182682972
+    },
+    "linear_equation": {
+      "intercept": 1108.9966085900398,
+      "coef_humidity": -9.143167956724644,
+      "coef_temp": 17.902875541861718
+    },
+    "model_type": "RandomForestRegressor + LinearRegression",
+    "rf_params": {
+      "n_estimators": 120,
+      "max_depth": 10,
+      "min_samples_leaf": 15,
+      "n_jobs": -1,
+      "random_state": 42
+    },
+    "data": "synthetic_public_demo"
+  },
+  "Unit_5": {
+    "features": [
+      "humidity_abs",
+      "temp_ambient"
+    ],
+    "r2_rf_test": 0.837594907057289,
+    "r2_linear_test": 0.830435581259067,
+    "rmse_rf_test": 38.965733949490286,
+    "mae_rf_test": 31.218015124393155,
+    "n_train": 9211,
+    "n_test": 2303,
+    "feature_importance": {
+      "humidity_abs": 0.9508706554751192,
+      "temp_ambient": 0.049129344524880846
+    },
+    "linear_equation": {
+      "intercept": 1031.43069703016,
+      "coef_humidity": -34.80847884046187,
+      "coef_temp": 4.101539124100376
+    },
+    "model_type": "RandomForestRegressor + LinearRegression",
+    "rf_params": {
+      "n_estimators": 120,
+      "max_depth": 10,
+      "min_samples_leaf": 15,
+      "n_jobs": -1,
+      "random_state": 42
+    },
+    "data": "synthetic_public_demo"
+  },
+  "Unit_6": {
+    "features": [
+      "humidity_abs",
+      "temp_ambient"
+    ],
+    "r2_rf_test": 0.8442467065332805,
+    "r2_linear_test": 0.8388093033914596,
+    "rmse_rf_test": 34.461627598374285,
+    "mae_rf_test": 27.487523339068492,
+    "n_train": 9200,
+    "n_test": 2300,
+    "feature_importance": {
+      "humidity_abs": 0.8943172794486757,
+      "temp_ambient": 0.1056827205513242
+    },
+    "linear_equation": {
+      "intercept": 993.0751696226548,
+      "coef_humidity": -31.570715458073924,
+      "coef_temp": 5.933293239207589
+    },
+    "model_type": "RandomForestRegressor + LinearRegression",
+    "rf_params": {
+      "n_estimators": 120,
+      "max_depth": 10,
+      "min_samples_leaf": 15,
+      "n_jobs": -1,
+      "random_state": 42
+    },
+    "data": "synthetic_public_demo"
+  }
+}

@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.env
+.env.*
+
+# Model weights (regenerate with train.py — keep repo light)
+**/*.joblib
+**/output/*.png
+**/output/projection_nox.csv
+
+# Data that must never be public
+**/data/raw/
+**/data/client/
+**/Datos.xlsx
+**/*MOTOR*
+**/*UTE*
+**/*PII*
+**/*confidential*
+
+# Synthetic demo CSV is OK to commit (generated, no client link)
+!showcase/industrial-nox-projection/data/synthetic_units.csv
+!showcase/industrial-nox-projection/output/metrics_by_unit.csv
+!showcase/industrial-nox-projection/output/metrics.json
+!showcase/industrial-nox-projection/output/REPORT.md
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Local secrets & credentials
+secrets/
+*.pem
+*.key
+credentials.json
+token.json
+
+# Build / dist
+dist/
+build/
+*.exe
+*.zip
+!showcase/**/examples/*.csv
