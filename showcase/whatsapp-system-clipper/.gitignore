@@ -1,6 +1,7 @@
 # Local audio — never commit recordings
 clips/*
 !clips/.gitkeep
+!clips/README.md
 
 # Runtime / build
 .venv/
