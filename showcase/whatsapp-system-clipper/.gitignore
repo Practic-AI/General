@@ -1,0 +1,16 @@
+# Local audio — never commit recordings
+clips/*
+!clips/.gitkeep
+
+# Runtime / build
+.venv/
+__pycache__/
+*.pyc
+build/
+dist/
+share/
+*.exe
+*.wav
+*.m4a
+*.mp3
+*.aac

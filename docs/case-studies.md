@@ -48,9 +48,26 @@ Generic LLM answers on legal scenarios often hedge, mis-map jurisdiction, or mis
 
 ---
 
-## 3. Workflow micro-tools (selected)
+## 3. Clip for WhatsApp (system audio micro-tool)
 
-Internal and client-adjacent tools (token/cost dashboards, clippers, recruiting helpers) prove we can ship **usable software**, not only notebooks. Specific client branding and personal data stay out of public repos; structure and patterns can be re-implemented as open examples on request.
+**Problem**  
+People need a short clip of **what the PC is playing** (a video, a call in a browser tab, a game cue) to send on WhatsApp — without a full screen recorder or mic capture.
+
+**What we built**
+
+- Windows WASAPI loopback recorder (playback only, not microphone)
+- Lean mono 22 kHz path + HD stereo path
+- One-click **M4A** export for WhatsApp attach
+- Global hotkey, portable `clips\` folder, optional PyInstaller build
+
+**Public demo**  
+[`showcase/whatsapp-system-clipper/`](../showcase/whatsapp-system-clipper/) — source only; no sample recordings.
+
+---
+
+## 4. Other workflow micro-tools
+
+Internal tools (token/cost dashboards, recruiting helpers) prove product sense. Client branding and personal data stay out of public repos.
 
 ---
 

@@ -27,6 +27,7 @@ Engagements are usually **fixed-scope packages**: discovery → deliverable ZIP 
 |----------|----------------------|------|
 | **Industrial NOx projection** | Per-unit Random Forest + linear baseline; humidity & ambient temp → NOx estimate; train / predict CLI | [`showcase/industrial-nox-projection/`](showcase/industrial-nox-projection/) |
 | **Legal AI reasoning evals** | Domain evaluation design for legal training quality (bilingual ES/EN) | [`showcase/legal-ai-evals/`](showcase/legal-ai-evals/) |
+| **Clip for WhatsApp** | Windows system-audio recorder → lean/HD WAV + M4A for chat (no mic, no samples in repo) | [`showcase/whatsapp-system-clipper/`](showcase/whatsapp-system-clipper/) |
 
 > **Client work is confidential.** Public demos use **synthetic or public-domain material only**. No plant tags, site names, operator IDs, or personal data.
 
@@ -57,6 +58,7 @@ General/                     ← this repository (github.com/Practic-AI/General)
   showcase/
     industrial-nox-projection/
     legal-ai-evals/
+    whatsapp-system-clipper/
 ```
 
 ### Local disk separation
