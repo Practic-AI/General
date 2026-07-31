@@ -24,10 +24,19 @@ git config --global user.name "Your Name"
 git config --global user.email "you@email.com"
 ```
 
-## First push (from this folder)
+## Local path (separated from private work)
+
+```text
+C:\Users\dranz\Practic-AI\General\     ← this repo (public git only)
+C:\Users\dranz\Grok folder\            ← private workspace (no git remote)
+```
+
+These folders do **not** overlap. Never nest one inside the other.
+
+## First push (already done if you published once)
 
 ```powershell
-cd "C:\Users\dranz\Grok folder\practic-ai"
+cd C:\Users\dranz\Practic-AI\General
 
 # if not already a git repo:
 git init
@@ -45,6 +54,17 @@ If the remote already has a commit (e.g. empty README):
 ```powershell
 git pull origin main --rebase
 git push -u origin main
+```
+
+## Day-to-day
+
+```powershell
+cd C:\Users\dranz\Practic-AI\General
+git pull
+# edit files only under this tree
+git add .
+git commit -m "Describe change"
+git push
 ```
 
 ## Recommended org hygiene

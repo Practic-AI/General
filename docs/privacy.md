@@ -35,9 +35,20 @@ Confidential client deliveries stay offline (or in private repos with access con
 
 > *Work for a confidential industrial client. This repository demonstrates the method with synthetic process data.*
 
+## Environment split (hard boundary)
+
+| Tree | Path | Git |
+|------|------|-----|
+| **Public** | `C:\Users\dranz\Practic-AI\General\` | Yes → GitHub |
+| **Private** | `C:\Users\dranz\Grok folder\` | No remote; local only |
+
+Do not copy files from the private tree into the public tree without a scrub pass.
+See `C:\Users\dranz\Grok folder\LOCAL_ONLY.md`.
+
 ## Before every push
 
 ```text
+[ ] You are in Practic-AI\General  (not Grok folder)
 [ ] No client names in paths, README, commits, or zip names
 [ ] No SCADA tags or station names
 [ ] No real plant Excel / CSV dumps

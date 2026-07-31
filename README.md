@@ -50,13 +50,20 @@ py -3 predict.py --series examples/series_input.csv --unit all
 ## Repo layout
 
 ```
-practic-ai/                  ← this repository (maps to Practic-AI/General)
+General/                     ← this repository (github.com/Practic-AI/General)
   README.md                  ← you are here
   docs/                      ← company, privacy, case studies
   services/                  ← what we sell (productized offers)
   showcase/
     industrial-nox-projection/
     legal-ai-evals/
+```
+
+### Local disk separation
+
+```text
+C:\Users\dranz\Practic-AI\General\   ← public git (this folder)
+C:\Users\dranz\Grok folder\          ← private work only (no overlap)
 ```
 
 Private client packages, raw plant files, and recruiting data **never** live in this repo.
