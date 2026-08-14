@@ -1,0 +1,12 @@
+status_code,status_label,is_active_registration
+V,Valid registration,1
+M,Valid — assigned to manufacturer (dealer certificate),1
+R,Registration pending,0
+N,Non-citizen corp missing flight-hour report,0
+E,Certificate revoked by enforcement,0
+T,Valid registration from a trainee,1
+W,Certificate deemed ineffective or invalid,0
+7,Sale reported,0
+17,Other / uncommon code,0
+20,Other / uncommon code,0
+23,Other / uncommon code,0

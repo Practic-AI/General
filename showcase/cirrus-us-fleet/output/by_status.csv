@@ -1,0 +1,9 @@
+status_code,status_label,n
+V,Valid registration,8958
+M,Valid — assigned to manufacturer (dealer certificate),364
+R,Registration pending,47
+N,Non-citizen corp missing flight-hour report,7
+7,Sale reported,6
+23,Other / uncommon code,2
+20,Other / uncommon code,1
+17,Other / uncommon code,1

@@ -26,6 +26,7 @@ Engagements are usually **fixed-scope packages**: discovery → deliverable ZIP 
 | Showcase | What it demonstrates | Path |
 |----------|----------------------|------|
 | **Industrial NOx projection** | Per-unit Random Forest + linear baseline; humidity & ambient temp → NOx estimate; train / predict CLI | [`showcase/industrial-nox-projection/`](showcase/industrial-nox-projection/) |
+| **Cirrus US fleet snapshot** | FAA public registry → DuckDB SQL, QC, and a dashboard of US-registered Cirrus airframes (not affiliated) | [`showcase/cirrus-us-fleet/`](showcase/cirrus-us-fleet/) |
 | **Legal AI reasoning evals** | Domain evaluation design for legal training quality (bilingual ES/EN) | [`showcase/legal-ai-evals/`](showcase/legal-ai-evals/) |
 | **Clip for WhatsApp** | Windows system-audio recorder → lean/HD WAV + M4A for chat (no mic, no samples in repo) | [`showcase/whatsapp-system-clipper/`](showcase/whatsapp-system-clipper/) |
 
@@ -57,6 +58,7 @@ General/                     ← this repository (github.com/Practic-AI/General)
   services/                  ← what we sell (productized offers)
   showcase/
     industrial-nox-projection/
+    cirrus-us-fleet/
     legal-ai-evals/
     whatsapp-system-clipper/
 ```

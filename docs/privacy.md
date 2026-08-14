@@ -14,6 +14,15 @@ Practic-AI public repositories are built so that **nothing on GitHub can identif
 | Recruiting pipelines, CVs, InMails | Personal data |
 | Anything under NDA | Legal risk |
 
+## FAA / public government extracts
+
+US aircraft registration is a public file. Still:
+
+- Drop owner **name, street, city, ZIP, county** before anything is committed
+- Keep raw `MASTER.txt` / the FAA zip **out of git** (`_raw/` is gitignored)
+- N-numbers and serials are already painted on the airplane; they may stay in the stripped extract
+- Never imply the analysis is Cirrus internal data
+
 ## What *is* OK publicly
 
 - Method descriptions (features, model family, train/test split)

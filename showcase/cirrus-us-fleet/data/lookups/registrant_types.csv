@@ -1,0 +1,9 @@
+type_registrant,registrant_label
+1,Individual
+2,Partnership
+3,Corporation
+4,Co-owned
+5,Government
+7,LLC
+8,Non-citizen corporation
+9,Non-citizen co-owned

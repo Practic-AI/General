@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cirrus US fleet snapshot — Practic-AI</title>
+  <style>
+    :root { --navy:#1B365D; --gold:#C4A35A; --ink:#1f2937; --muted:#6b7280; --bg:#f6f7f9; }
+    body { margin:0; font-family: Calibri, Segoe UI, sans-serif; color:var(--ink); background:var(--bg); }
+    header { background:var(--navy); color:#fff; padding:28px 24px 22px; }
+    header p { margin:6px 0 0; color:#d5dde8; max-width:720px; }
+    main { max-width:980px; margin:0 auto; padding:24px; }
+    .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin:18px 0 28px; }
+    .kpi { background:#fff; border:1px solid #e5e7eb; padding:14px 16px; }
+    .kpi b { display:block; font-size:26px; color:var(--navy); }
+    .kpi span { color:var(--muted); font-size:13px; }
+    figure { background:#fff; border:1px solid #e5e7eb; padding:12px 12px 6px; margin:0 0 18px; }
+    figure img { width:100%; height:auto; display:block; }
+    figcaption { color:var(--muted); font-size:12px; padding:6px 4px 8px; }
+    .note { font-size:14px; color:var(--muted); line-height:1.45; }
+    footer { padding:20px 24px 40px; color:var(--muted); font-size:13px; max-width:980px; margin:0 auto; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cirrus US fleet snapshot</h1>
+    <p>FAA Releasable Aircraft Database. Public data. Owner names and addresses stripped. Not affiliated with Cirrus Aircraft.</p>
+  </header>
+  <main>
+    <div class="kpis">
+      <div class="kpi"><b>9,386</b><span>US-registered Cirrus airframes</span></div>
+      <div class="kpi"><b>8,958</b><span>Valid registrations (V)</span></div>
+      <div class="kpi"><b>364</b><span>On manufacturer dealer cert (M)</span></div>
+      <div class="kpi"><b>9.0</b><span>Median age (years, known vintage)</span></div>
+      <div class="kpi"><b>7.7%</b><span>Rows missing manufacture year</span></div>
+    </div>
+    <figure>
+      <img src="output/charts/by_model.png" alt="Airframes by model" />
+      <figcaption>Production mix on the US register. SR22 / SR22T dominate.</figcaption>
+    </figure>
+    <figure>
+      <img src="output/charts/by_year.png" alt="Vintage stack" />
+      <figcaption>This is surviving US registry by year built — not GAMA deliveries. 2026 is a partial year.</figcaption>
+    </figure>
+    <figure>
+      <img src="output/charts/by_state.png" alt="Registration state" />
+      <figcaption>Florida / California / Texas are flying markets. Delaware and Wyoming are often where the LLC lives.</figcaption>
+    </figure>
+    <figure>
+      <img src="output/charts/by_registrant.png" alt="Registrant type" />
+      <figcaption>Most Cirrus airframes are held by an LLC, not an individual name.</figcaption>
+    </figure>
+    <p class="note">Extracted 2026-08-14T23:02:26Z. SQL lives in <code>sql/fleet_kpis.sql</code>. Refresh with <code>py -3 ingest.py</code> then <code>py -3 analyze.py</code>.</p>
+  </main>
+  <footer>
+    Practic-AI public showcase. Source: <a href="https://registry.faa.gov/database/ReleasableAircraft.zip">registry.faa.gov</a>.
+    Do not treat this as official Cirrus fleet reporting.
+  </footer>
+</body>
+</html>
