@@ -1,6 +1,6 @@
 # Cirrus US fleet snapshot
 
-- Source: FAA Releasable Aircraft Database, extracted 2026-08-14T23:02:26Z.
+- Source: FAA Releasable Aircraft Database, extracted 2026-08-14T23:05:46Z.
 - Not affiliated with Cirrus Aircraft. Public registry data only. Owner names and addresses stripped.
 
 ## Headlines

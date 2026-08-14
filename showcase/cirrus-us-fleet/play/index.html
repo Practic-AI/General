@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cirrus hangar — a friend walkthrough</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="grain"></div>
+
+  <header class="hero">
+    <p class="eyebrow">Not a Cirrus product · public FAA file · names stripped</p>
+    <h1>Come look at the <span>hangar</span></h1>
+    <p class="subtitle">
+      Every Cirrus that still has a US tail number, dumped on a table.
+      Click around like we’re killing time before coffee.
+    </p>
+  </header>
+
+  <section class="story" id="story">
+    <div class="story-head">
+      <p class="kicker">Walkthrough</p>
+      <h2 id="storyTitle"></h2>
+    </div>
+    <p class="story-body" id="storyBody"></p>
+    <div class="story-nav">
+      <button type="button" id="storyPrev">← Back</button>
+      <div class="dots" id="storyDots"></div>
+      <button type="button" id="storyNext">Next →</button>
+    </div>
+  </section>
+
+  <section class="board">
+    <div class="kpis" id="kpis"></div>
+
+    <div class="controls">
+      <div class="chips" id="modelChips"></div>
+      <label class="years">
+        Years
+        <input type="range" id="yearMin" min="1999" max="2026" value="1999" />
+        <input type="range" id="yearMax" min="1999" max="2026" value="2026" />
+        <span id="yearLabel">1999–2026</span>
+      </label>
+      <label class="search">
+        N-number
+        <input type="search" id="search" placeholder="N1234C" autocomplete="off" />
+      </label>
+      <button type="button" class="surprise" id="surprise">Surprise me</button>
+      <label class="toggle">
+        <input type="checkbox" id="knownYear" />
+        Hide planes with no year
+      </label>
+    </div>
+
+    <div class="layout">
+      <div class="card">
+        <h3>Vintage</h3>
+        <p class="hint">Survivors on the US register, not factory sales. 2009 is the crater. 2026 is unfinished.</p>
+        <svg id="yearChart" viewBox="0 0 640 220" role="img" aria-label="Airframes by year"></svg>
+      </div>
+      <div class="card pull">
+        <h3>This tail</h3>
+        <div id="tailCard" class="tail empty">Hit surprise, or type an N-number.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Paper homes</h3>
+      <p class="hint">Click a state. Size is how many N-numbers live there on paper — not hangar address.</p>
+      <div class="tiles" id="tiles"></div>
+    </div>
+
+    <div class="card">
+      <h3>Who holds the paperwork</h3>
+      <div class="bars" id="regBars"></div>
+    </div>
+  </section>
+
+  <footer>
+    Built from the FAA Releasable Aircraft Database. Not affiliated with Cirrus Aircraft.
+    We deleted owner names and addresses on purpose.
+    <a href="../dashboard.html">Quiet charts</a> ·
+    <a href="../WALKTHROUGH.md">What to say out loud</a>
+  </footer>
+
+  <script src="fleet-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

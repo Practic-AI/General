@@ -1,7 +1,7 @@
 {
   "source": "https://registry.faa.gov/database/ReleasableAircraft.zip",
   "source_name": "FAA Releasable Aircraft Database (MASTER + ACFTREF)",
-  "extracted_at_utc": "2026-08-14T23:02:26Z",
+  "extracted_at_utc": "2026-08-14T23:05:46Z",
   "cirrus_rows": 9386,
   "missing_year_mfr": 721,
   "pii_dropped": [

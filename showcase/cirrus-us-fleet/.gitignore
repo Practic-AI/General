@@ -2,3 +2,4 @@ _raw/
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+play/fleet.json

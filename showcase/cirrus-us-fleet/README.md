@@ -24,7 +24,9 @@ py -3 ingest.py          # download FAA zip (cached under _raw/) and write the P
 py -3 analyze.py         # DuckDB SQL → output/ + dashboard.html
 ```
 
-Then open `dashboard.html`.
+Then open `dashboard.html` (quiet charts) or `play/Open.bat` (friend hangar).
+
+Walkthrough you can say out loud: [`WALKTHROUGH.md`](WALKTHROUGH.md).
 
 If `data/processed/cirrus_us_fleet.csv` is already in the clone, you can skip ingest and just run `analyze.py`.
 
