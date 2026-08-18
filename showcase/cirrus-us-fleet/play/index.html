@@ -53,6 +53,17 @@
       </label>
     </div>
 
+    <div class="map-stage" id="mapStage">
+      <div class="map-copy">
+        <h3>Paper homes</h3>
+        <p class="hint">Each state is a field of little lights. Drag the mouse — some go dark, some flare. Click to lock a state.</p>
+      </div>
+      <div class="map-wrap" id="mapWrap">
+        <canvas id="usMap"></canvas>
+        <div class="map-tip" hidden></div>
+      </div>
+    </div>
+
     <div class="layout">
       <div class="card">
         <h3>Vintage</h3>
@@ -63,12 +74,6 @@
         <h3>This tail</h3>
         <div id="tailCard" class="tail empty">Hit surprise, or type an N-number.</div>
       </div>
-    </div>
-
-    <div class="card">
-      <h3>Paper homes</h3>
-      <p class="hint">Click a state. Size is how many N-numbers live there on paper — not hangar address.</p>
-      <div class="tiles" id="tiles"></div>
     </div>
 
     <div class="card">
@@ -85,6 +90,8 @@
   </footer>
 
   <script src="fleet-data.js"></script>
+  <script src="dots-data.js"></script>
+  <script src="map.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

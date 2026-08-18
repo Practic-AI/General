@@ -65,8 +65,9 @@ About **8%** of rows have no manufacture year. If you ever age the fleet or pric
 Open `play/Open.bat` (or `play/index.html`).
 
 1. Click through the story cards like you’re showing a friend a hangar.
-2. Hit **Surprise me** — a random tail pops up.
-3. Turn models on/off. Drag the year bar. Click a state tile.
-4. Search an N-number if they ask “can I look one up?”
+2. Drag the mouse over the dotted US map — the lights in that state flicker.
+3. Hit **Surprise me** — a random tail pops up.
+4. Turn models on/off. Drag the year bar. Click a state to lock the filter.
+5. Search an N-number if they ask “can I look one up?”
 
 If it gets stiff, say: *we built this because the public file is sitting there and it’s fun, not because Cirrus sent us a spreadsheet.*

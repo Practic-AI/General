@@ -126,7 +126,7 @@ function renderYears(rows) {
   svg.innerHTML = `${bars}${ticks}`;
 }
 
-function renderTiles(rows) {
+function stateCounts(rows) {
   const by = {};
   ALL_STATES.forEach((s) => {
     by[s] = 0;
@@ -134,13 +134,13 @@ function renderTiles(rows) {
   rows.forEach((d) => {
     if (d.s && by[d.s] != null) by[d.s] += 1;
   });
-  const max = Math.max(1, ...Object.values(by));
-  $("tiles").innerHTML = ALL_STATES.map((s) => {
-    const n = by[s];
-    const t = 0.18 + 0.82 * (n / max);
-    const on = state.pickState === s ? "on" : "";
-    return `<button class="tile ${on}" data-s="${s}" style="background:rgba(224,177,90,${t})" title="${s}: ${n}">${s}</button>`;
-  }).join("");
+  return by;
+}
+
+function renderMap(rows) {
+  if (!window.HangarMap) return;
+  HangarMap.setCounts(stateCounts(rows));
+  HangarMap.setSelected(state.pickState);
 }
 
 function renderRegs(rows) {
@@ -178,7 +178,7 @@ function refresh() {
   const rows = filtered();
   renderKpis(rows);
   renderYears(rows);
-  renderTiles(rows);
+  renderMap(rows);
   renderRegs(rows);
 }
 
@@ -220,13 +220,21 @@ async function boot() {
   refresh();
   surprise();
 
+  const pulseStory = () => {
+    if (!window.HangarMap) return;
+    if (state.story === 3) HangarMap.pulse("MN");
+    else if (state.story === 4) HangarMap.pulse("DE");
+  };
+
   $("storyNext").onclick = () => {
     state.story = (state.story + 1) % STORIES.length;
     renderStory();
+    pulseStory();
   };
   $("storyPrev").onclick = () => {
     state.story = Math.max(0, state.story - 1);
     renderStory();
+    pulseStory();
   };
 
   $("modelChips").onclick = (ev) => {
@@ -257,12 +265,14 @@ async function boot() {
     refresh();
   };
 
-  $("tiles").onclick = (ev) => {
-    const s = ev.target.dataset.s;
-    if (!s) return;
-    state.pickState = state.pickState === s ? "" : s;
-    refresh();
-  };
+  if (window.HangarMap) {
+    HangarMap.mount($("mapWrap"), {
+      onPick(st) {
+        state.pickState = state.pickState === st ? "" : st;
+        refresh();
+      },
+    });
+  }
 
   $("surprise").onclick = surprise;
   $("search").onchange = (ev) => findN(ev.target.value);

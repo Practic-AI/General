@@ -1,13 +1,13 @@
 :root {
-  --bg: #100e0c;
-  --surface: #1a1612;
-  --card: #221d18;
-  --ink: #f3ece3;
-  --muted: #b3a79a;
+  --bg: #070707;
+  --surface: #111111;
+  --card: #141414;
+  --ink: #f2f2f2;
+  --muted: #8a8a8a;
   --gold: #e0b15a;
   --sky: #7eb6d6;
-  --red: #d97868;
-  --line: rgba(243, 236, 227, 0.1);
+  --red: #c23b2e;
+  --line: rgba(255, 255, 255, 0.08);
   --font: "Segoe UI", system-ui, sans-serif;
 }
 
@@ -194,24 +194,37 @@ body {
 .tail .n { font-size: 1.6rem; letter-spacing: 0.06em; color: var(--gold); }
 .tail .meta { color: var(--muted); margin-top: 0.35rem; }
 
-.tiles {
+.map-stage {
+  background: #050505;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 0.9rem 0.6rem 0.4rem;
+  margin-bottom: 0.9rem;
+}
+
+.map-copy { padding: 0 0.6rem 0.4rem; }
+.map-copy h3 { font-size: 1rem; }
+
+.map-wrap { position: relative; width: 100%; }
+.map-wrap canvas { display: block; width: 100%; height: auto; }
+
+.map-tip {
+  position: absolute;
+  transform: translate(-50%, -120%);
+  pointer-events: none;
+  background: #161616;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 0.35rem 0.55rem;
+  font-size: 0.8rem;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
+  flex-direction: column;
+  gap: 0.05rem;
+  white-space: nowrap;
 }
-
-.tile {
-  border: 0;
-  border-radius: 8px;
-  color: #1a1612;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 0.72rem;
-  min-width: 2.2rem;
-  padding: 0.35rem 0.4rem;
-}
-
-.tile.on { outline: 2px solid #fff; }
+.map-tip b { font-weight: 650; }
+.map-tip span { color: var(--muted); font-size: 0.74rem; }
 
 .bars { display: grid; gap: 0.45rem; }
 
