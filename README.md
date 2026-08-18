@@ -27,7 +27,6 @@ Engagements are usually **fixed-scope packages**: discovery → deliverable ZIP 
 |----------|----------------------|------|
 | **Industrial NOx projection** | Per-unit Random Forest + linear baseline; humidity & ambient temp → NOx estimate; train / predict CLI | [`showcase/industrial-nox-projection/`](showcase/industrial-nox-projection/) |
 | **Cirrus US fleet snapshot** | FAA public registry → DuckDB SQL, QC, and a dashboard of US-registered Cirrus airframes (not affiliated) | [`showcase/cirrus-us-fleet/`](showcase/cirrus-us-fleet/) |
-| **Uruguay market brief** | Public-source Southern Cone penetration note (Cielo territory, service desert, Punta) | [`showcase/cirrus-uy-market/`](showcase/cirrus-uy-market/) |
 | **Legal AI reasoning evals** | Domain evaluation design for legal training quality (bilingual ES/EN) | [`showcase/legal-ai-evals/`](showcase/legal-ai-evals/) |
 | **Clip for WhatsApp** | Windows system-audio recorder → lean/HD WAV + M4A for chat (no mic, no samples in repo) | [`showcase/whatsapp-system-clipper/`](showcase/whatsapp-system-clipper/) |
 
