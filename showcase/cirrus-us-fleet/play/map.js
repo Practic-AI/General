@@ -29,12 +29,23 @@
     return Math.sqrt(n / max);
   }
 
+  function mix(a, b, t) {
+    return [
+      a[0] + (b[0] - a[0]) * t,
+      a[1] + (b[1] - a[1]) * t,
+      a[2] + (b[2] - a[2]) * t,
+    ];
+  }
+
   function color(t, bright) {
-    // dingy rust → live red. t = data heat, bright = flicker 0..1
-    const r = Math.round(70 + t * 140 + bright * 70);
-    const g = Math.round(18 + t * 28 + bright * 22);
-    const b = Math.round(16 + t * 12 + bright * 10);
-    return `rgb(${Math.min(255, r)},${Math.min(80, g)},${Math.min(50, b)})`;
+    // Cirrus night navy → silver → signature red. Hover sparkles silver/red.
+    const navy = [18, 36, 64];
+    const silver = [188, 198, 208];
+    const red = [196, 16, 36];
+    const base = t < 0.55 ? mix(navy, silver, t / 0.55) : mix(silver, red, (t - 0.55) / 0.45);
+    const spark = bright > 0.5 ? mix(base, silver, (bright - 0.5) * 1.15) : mix(red, base, bright * 2);
+    const lit = mix(base, spark, Math.min(1, bright));
+    return `rgb(${lit.map((v) => Math.round(Math.max(0, Math.min(255, v)))).join(",")})`;
   }
 
   function hit(mx, my) {
@@ -78,7 +89,14 @@
     const h = pack.h * scale;
     ctx.clearRect(0, 0, w, h);
     const t = now * 0.001;
-    const r = Math.max(1.05, 1.35 * scale);
+    const r = Math.max(1.05, 1.28 * scale);
+    if (pack.insets) {
+      ctx.strokeStyle = "rgba(188,198,208,0.12)";
+      ctx.lineWidth = 1;
+      for (const box of Object.values(pack.insets)) {
+        ctx.strokeRect(box[0] * scale, box[1] * scale, box[2] * scale, box[3] * scale);
+      }
+    }
 
     for (const [st, pts] of Object.entries(pack.dots)) {
       const n = counts[st] || 0;

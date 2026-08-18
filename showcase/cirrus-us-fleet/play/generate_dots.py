@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Stipple US states into a regular grid of dots (Polymarket-style)."""
+"""Stipple US states. CONUS is full-bleed; AK/HI are tiny insets."""
 from __future__ import annotations
 
 import json
@@ -27,8 +27,11 @@ NAME_TO_ABBR = {
 }
 
 SKIP = {"Puerto Rico"}
-W, H = 1100, 680
-PAD = 18
+W, H = 1180, 700
+PAD = 28
+# Insets live in the empty Mexico / Pacific pocket. CONUS uses the whole frame.
+AK_BOX = (36.0, H - 176.0, 156.0, 128.0)
+HI_BOX = (208.0, H - 102.0, 124.0, 62.0)
 
 
 def albers(lon, lat, lat0, lon0, lat1, lat2):
@@ -46,14 +49,20 @@ def albers(lon, lat, lat0, lon0, lat1, lat2):
     return rho * math.sin(theta), rho0 - rho * math.cos(theta)
 
 
-def project(lon, lat, name: str):
+def project_raw(lon, lat, name: str):
     if name == "Alaska":
-        x, y = albers(lon, lat, 63.0, -152.0, 55.0, 65.0)
-        return x * 0.37 - 0.72, y * 0.37 + 0.18
+        return albers(lon, lat, 64.0, -154.0, 55.0, 65.0)
     if name == "Hawaii":
-        x, y = albers(lon, lat, 20.9, -157.0, 8.0, 18.0)
-        return x * 1.15 - 0.22, y * 1.15 + 0.22
-    return albers(lon, lat, 37.5, -96.0, 29.5, 45.5)
+        return albers(lon, lat, 20.6, -157.0, 19.0, 21.5)
+    return albers(lon, lat, 38.0, -96.5, 29.5, 45.5)
+
+
+def keep_vertex(name: str, lon: float, lat: float) -> bool:
+    if name == "Alaska":
+        return lon > -169.5 and lat > 51.2
+    if name == "Hawaii":
+        return -161.0 < lon < -154.0 and 18.5 < lat < 22.5
+    return True
 
 
 def rings_of(geom):
@@ -78,10 +87,39 @@ def pip(x, y, ring):
     return inside
 
 
+def bbox(rings):
+    xs, ys = [], []
+    for ring in rings:
+        for x, y in ring:
+            xs.append(x)
+            ys.append(y)
+    return min(xs), min(ys), max(xs), max(ys)
+
+
+def fit(rings, box, src=None, flip_y=True, pad=4.0):
+    bx, by, bw, bh = box
+    minx, miny, maxx, maxy = src if src else bbox(rings)
+    sx = (bw - 2 * pad) / max(maxx - minx, 1e-9)
+    sy = (bh - 2 * pad) / max(maxy - miny, 1e-9)
+    s = min(sx, sy)
+    cx = (minx + maxx) / 2
+    cy = (miny + maxy) / 2
+    ox = bx + bw / 2
+    oy = by + bh / 2
+    out = []
+    for ring in rings:
+        pts = []
+        for x, y in ring:
+            px = ox + (x - cx) * s
+            py = oy - (y - cy) * s if flip_y else oy + (y - cy) * s
+            pts.append((px, py))
+        out.append(pts)
+    return out
+
+
 def main() -> None:
     geo = json.loads(GEO.read_text(encoding="utf-8"))
-    projected: dict[str, list[list[tuple[float, float]]]] = {}
-    xs, ys = [], []
+    raw: dict[str, list[list[tuple[float, float]]]] = {}
     for feat in geo["features"]:
         name = feat["properties"]["name"]
         if name in SKIP:
@@ -89,32 +127,32 @@ def main() -> None:
         abbr = NAME_TO_ABBR[name]
         rings = []
         for ring in rings_of(feat["geometry"]):
-            pts = [project(lon, lat, name) for lon, lat in ring]
-            rings.append(pts)
-            for x, y in pts:
-                xs.append(x)
-                ys.append(y)
-        projected[abbr] = rings
+            pts = [
+                project_raw(lon, lat, name)
+                for lon, lat in ring
+                if keep_vertex(name, lon, lat)
+            ]
+            if len(pts) >= 4:
+                rings.append(pts)
+        if rings:
+            raw[abbr] = rings
 
-    minx, maxx = min(xs), max(xs)
-    miny, maxy = min(ys), max(ys)
-    # flip y for canvas
-    span = max(maxx - minx, maxy - miny)
-
-    def to_px(x, y):
-        px = PAD + (x - minx) / (maxx - minx) * (W - 2 * PAD)
-        py = PAD + (1.0 - (y - miny) / (maxy - miny)) * (H - 2 * PAD)
-        return px, py
-
+    conus = {k: v for k, v in raw.items() if k not in {"AK", "HI"}}
+    conus_src = bbox([ring for rings in conus.values() for ring in rings])
     px_rings: dict[str, list[list[tuple[float, float]]]] = {}
-    for abbr, rings in projected.items():
-        px_rings[abbr] = [[to_px(x, y) for x, y in ring] for ring in rings]
+    frame = (PAD, PAD, W - 2 * PAD, H - 2 * PAD)
+    for abbr, rings in conus.items():
+        px_rings[abbr] = fit(rings, frame, src=conus_src, pad=0)
+    if "AK" in raw:
+        px_rings["AK"] = fit(raw["AK"], AK_BOX, pad=3)
+    if "HI" in raw:
+        px_rings["HI"] = fit(raw["HI"], HI_BOX, pad=2)
 
     def fill(step: float, only: set[str] | None = None) -> None:
-        y = PAD
-        while y < H - PAD:
-            x = PAD + (0 if int((y - PAD) / step) % 2 == 0 else step * 0.5)
-            while x < W - PAD:
+        y = 8.0
+        while y < H - 8:
+            x = 8.0 + (0 if int(y / step) % 2 == 0 else step * 0.5)
+            while x < W - 8:
                 hit = None
                 for abbr, rings in px_rings.items():
                     if only is not None and abbr not in only:
@@ -127,12 +165,12 @@ def main() -> None:
                 x += step
             y += step
 
-    step = 5.6
+    step = 5.8
     dots: dict[str, list[list[float]]] = {k: [] for k in px_rings}
     fill(step)
-    tiny = {k for k, v in dots.items() if len(v) < 12}
+    tiny = {k for k, v in dots.items() if len(v) < 14}
     if tiny:
-        fill(2.4, tiny)
+        fill(2.3, tiny)
 
     labels = {}
     for abbr, pts in dots.items():
@@ -143,10 +181,17 @@ def main() -> None:
             round(sum(p[1] for p in pts) / len(pts), 1),
         ]
 
-    payload = {"w": W, "h": H, "dots": dots, "labels": labels}
+    payload = {
+        "w": W,
+        "h": H,
+        "dots": dots,
+        "labels": labels,
+        "insets": {"AK": list(AK_BOX), "HI": list(HI_BOX)},
+    }
     OUT.write_text("window.STATE_DOTS = " + json.dumps(payload, separators=(",", ":")) + ";\n", encoding="utf-8")
     n = sum(len(v) for v in dots.values())
     print(f"states={len(dots)} dots={n} → {OUT.name} ({OUT.stat().st_size:,} bytes)")
+    print("AK", len(dots.get("AK", [])), "HI", len(dots.get("HI", [])), "CA", len(dots.get("CA", [])))
     empty = [k for k, v in dots.items() if not v]
     if empty:
         print("empty", empty)

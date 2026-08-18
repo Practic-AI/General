@@ -4,9 +4,10 @@
   --card: #141414;
   --ink: #f2f2f2;
   --muted: #8a8a8a;
-  --gold: #e0b15a;
-  --sky: #7eb6d6;
-  --red: #c23b2e;
+  --gold: #c4cdd6;
+  --sky: #9aa7b5;
+  --red: #c41024;
+  --navy: #0b1c33;
   --line: rgba(255, 255, 255, 0.08);
   --font: "Segoe UI", system-ui, sans-serif;
 }
@@ -37,7 +38,7 @@ body {
 }
 
 .eyebrow {
-  color: var(--gold);
+  color: var(--red);
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 0.72rem;
@@ -50,7 +51,7 @@ body {
   font-weight: 720;
 }
 
-.hero h1 span { color: var(--gold); }
+.hero h1 span { color: var(--red); }
 
 .subtitle {
   color: var(--muted);
@@ -119,7 +120,7 @@ body {
   padding: 0.75rem 0.85rem;
 }
 
-.kpi b { display: block; font-size: 1.45rem; color: var(--gold); }
+.kpi b { display: block; font-size: 1.45rem; color: #f2f2f2; }
 .kpi span { color: var(--muted); font-size: 0.78rem; }
 
 .controls {
@@ -142,7 +143,7 @@ body {
   font-size: 0.85rem;
 }
 
-.chip.on { color: var(--bg); background: var(--gold); border-color: var(--gold); }
+.chip.on { color: #fff; background: var(--red); border-color: var(--red); }
 
 .years, .search, .toggle {
   color: var(--muted);
@@ -191,14 +192,14 @@ body {
 }
 
 .tail.empty { color: var(--muted); }
-.tail .n { font-size: 1.6rem; letter-spacing: 0.06em; color: var(--gold); }
+.tail .n { font-size: 1.6rem; letter-spacing: 0.06em; color: #fff; }
 .tail .meta { color: var(--muted); margin-top: 0.35rem; }
 
 .map-stage {
-  background: #050505;
+  background: #070b10;
   border: 1px solid var(--line);
   border-radius: 18px;
-  padding: 0.9rem 0.6rem 0.4rem;
+  padding: 1rem 0.85rem 0.55rem;
   margin-bottom: 0.9rem;
 }
 
@@ -245,4 +246,4 @@ footer {
   font-size: 0.82rem;
 }
 
-footer a { color: var(--gold); }
+footer a { color: var(--red); }
