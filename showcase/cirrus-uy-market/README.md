@@ -4,6 +4,8 @@ Public-source investigation. **Not a Cirrus engagement. Not DINACIA official cou
 
 Question: if Cirrus paid for Uruguay penetration, what is actually knowable from open data, and what would we do in 90 days?
 
+This page is meant to be shown, not read as a memo. Density math is a provocation, not a forecast.
+
 Open `index.html` or:
 
 https://raw.githack.com/Practic-AI/General/main/showcase/cirrus-uy-market/index.html
